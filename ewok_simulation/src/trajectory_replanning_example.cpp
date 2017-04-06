@@ -65,7 +65,7 @@ ros::Publisher occ_marker_pub, free_marker_pub, dist_marker_pub, trajectory_pub,
 tf::TransformListener * listener;
 
 
-void depthImageCallback(const sensor_msgs::Image::ConstPtr& msg)
+const void depthImageCallback(const sensor_msgs::Image::ConstPtr& msg)
 {
     //ROS_INFO("recieved depth image");
 
@@ -253,6 +253,7 @@ int main(int argc, char** argv){
 
     tf::MessageFilter<sensor_msgs::Image> tf_filter_(depth_image_sub_, *listener, "world", 5);
     tf_filter_.registerCallback(depthImageCallback);
+
 
 
     double max_velocity, max_acceleration;
